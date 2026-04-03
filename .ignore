@@ -1,0 +1,12 @@
+# Ignore package-lock.json as it slows down search tools
+package-lock.json
+
+# Ignore build output 
+dist/
+
+# Ignore node modules
+node_modules/
+
+# Ignore large media assets to speed up file parsing passes
+public/assets/
+public/logos/
