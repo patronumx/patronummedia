@@ -89,7 +89,7 @@ const Portfolio = () => {
     const folderPath = activeTab === 'Posters' ? '/assets/Posters' : '/assets/Thumbnails';
 
     return (
-        <section className="portfolio container" style={{ paddingTop: '150px', paddingBottom: '100px', minHeight: '80vh' }}>
+        <section className="portfolio container page-shell">
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -103,7 +103,7 @@ const Portfolio = () => {
             </motion.div>
 
             {/* Tab Selector */}
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginBottom: '60px' }}>
+            <div className="portfolio-tabs">
                 <button
                     onClick={() => setActiveTab('Posters')}
                     className={`btn-primary ${activeTab !== 'Posters' ? 'btn-secondary' : ''}`}

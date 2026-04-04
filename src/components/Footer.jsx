@@ -17,11 +17,11 @@ const Footer = () => {
             <div className="container">
                 <div className="footer-content">
                     <div className="footer-brand">
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '20px' }}>
-                            <img src="/logo.png" alt="Patronum Media Logo" style={{ height: '50px', objectFit: 'contain' }} />
-                            <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1' }}>
-                                <span style={{ fontSize: '1.4rem', fontWeight: 900, color: 'white' }}>PATRONUM MEDIA</span>
-                                <span className="gradient-text" style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '2px', marginTop: '4px' }}>PATRONUMX ECOSYSTEM</span>
+                        <div className="footer-brand-row">
+                            <img src="/logo.png" alt="Patronum Media Logo" className="footer-brand-logo" />
+                            <div className="footer-brand-text">
+                                <span className="footer-brand-title">PATRONUM MEDIA</span>
+                                <span className="gradient-text footer-brand-subtitle">PATRONUMX ECOSYSTEM</span>
                             </div>
                         </div>
                         <p>Engineering the future of esports content. From algorithmic optimization to hyper-visual executions, we operate seamlessly within the digital void.</p>

@@ -4,40 +4,33 @@ import { Mail, MessageCircle, Clock3 } from 'lucide-react';
 
 const Contact = () => {
     return (
-        <section className="container" style={{ paddingTop: '210px', paddingBottom: '100px', minHeight: '80vh' }}>
+        <section className="container page-shell page-shell-contact">
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                style={{ maxWidth: '980px', margin: '0 auto' }}
+                className="contact-shell"
             >
                 <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-                    <h1 style={{ fontSize: '3.5rem', marginBottom: '20px' }}>Contact <span className="gradient-text">Patronum Media</span></h1>
-                    <p style={{ fontSize: '1.15rem', color: 'var(--text-secondary)', maxWidth: '700px', margin: '0 auto', lineHeight: '1.8' }}>
+                    <h1 className="page-title page-title-md">Contact <span className="gradient-text">Patronum Media</span></h1>
+                    <p className="page-intro" style={{ maxWidth: '700px', margin: '0 auto' }}>
                         Reach out directly for collaborations, esports partnerships, talent inquiries, and production opportunities. Our team is available around the clock to respond.
                     </p>
                 </div>
 
                 <div
-                    className="glass-card"
-                    style={{
-                        padding: '48px',
-                        textAlign: 'left',
-                        background: 'linear-gradient(135deg, rgba(22, 12, 38, 0.92), rgba(17, 11, 31, 0.84))',
-                        border: '1px solid rgba(217, 70, 239, 0.18)',
-                        boxShadow: '0 24px 60px rgba(0, 0, 0, 0.28)'
-                    }}
+                    className="glass-card contact-card"
                 >
-                    <div style={{ display: 'grid', gridTemplateColumns: '1.15fr 1fr', gap: '32px', alignItems: 'stretch' }}>
+                    <div className="contact-grid">
                         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '24px' }}>
                             <div>
                                 <div style={{ color: 'var(--accent-cyan)', fontSize: '0.85rem', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '14px' }}>
                                     Direct Contact
                                 </div>
-                                <h2 style={{ fontSize: '2.6rem', lineHeight: '1.05', marginBottom: '16px' }}>
+                                <h2 className="contact-title">
                                     Let&apos;s build the next big move in esports together.
                                 </h2>
-                                <p style={{ color: 'rgba(255,255,255,0.72)', fontSize: '1rem', lineHeight: '1.85', maxWidth: '460px' }}>
+                                <p className="contact-copy">
                                     For sponsorships, player management, content production, brand collaborations, and business inquiries, connect with Patronum Media directly using the details here.
                                 </p>
                             </div>
@@ -59,7 +52,7 @@ const Contact = () => {
                                 </div>
                                 <div>
                                     <div style={{ color: 'rgba(255,255,255,0.62)', fontSize: '0.8rem', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', marginBottom: '6px' }}>Email Address</div>
-                                    <a href="mailto:patronumgg@gmail.com" style={{ color: 'white', fontSize: '1.28rem', fontWeight: 800, lineHeight: '1.3' }}>
+                                    <a href="mailto:patronumgg@gmail.com" className="contact-detail-link">
                                         patronumgg@gmail.com
                                     </a>
                                 </div>
@@ -71,7 +64,7 @@ const Contact = () => {
                                 </div>
                                 <div>
                                     <div style={{ color: 'rgba(255,255,255,0.62)', fontSize: '0.8rem', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', marginBottom: '6px' }}>WhatsApp</div>
-                                    <a href="tel:+923338638325" style={{ color: 'white', fontSize: '1.28rem', fontWeight: 800, lineHeight: '1.3' }}>
+                                    <a href="tel:+923338638325" className="contact-detail-link">
                                         +92 333 8638325
                                     </a>
                                 </div>
@@ -83,7 +76,7 @@ const Contact = () => {
                                 </div>
                                 <div>
                                     <div style={{ color: 'rgba(255,255,255,0.62)', fontSize: '0.8rem', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', marginBottom: '6px' }}>Availability</div>
-                                    <div style={{ color: 'white', fontSize: '1.28rem', fontWeight: 800, lineHeight: '1.3' }}>
+                                    <div className="contact-detail-link">
                                         Available 24/7, seven days a week
                                     </div>
                                 </div>

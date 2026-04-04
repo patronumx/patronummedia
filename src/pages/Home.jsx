@@ -16,13 +16,13 @@ const Home = () => {
 
     return (
         <div style={{ overflow: 'hidden' }}>
-            <section className="hero" style={{ position: 'relative', minHeight: '70vh', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', paddingTop: '280px' }}>
-                <motion.div className="hero-content" variants={containerVariants} initial="hidden" animate="visible" style={{ position: 'relative', zIndex: 20, paddingBottom: '120px' }}>
+            <section className="hero">
+                <motion.div className="hero-content" variants={containerVariants} initial="hidden" animate="visible">
                     <motion.h1 variants={itemVariants}>
                         Elevating Esports Talent.
                     </motion.h1>
 
-                    <motion.p variants={itemVariants} style={{ maxWidth: '850px', margin: '0 auto 2.5rem auto', fontSize: '1.4rem', lineHeight: '1.7', color: 'rgba(255, 255, 255, 0.95)', fontWeight: 400 }}>
+                    <motion.p variants={itemVariants} className="hero-description">
                         We connect world-class gaming phenoms with international opportunities. By bridging the gap between raw skill and global recognition, we engineer legendary careers that transcend the screen. From career stewardship to authentic brand alliances, your ultimate path to victory starts here.
                     </motion.p>
 
@@ -43,34 +43,34 @@ const Home = () => {
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.2, duration: 1, ease: "easeOut" }}
-                    style={{ position: 'absolute', bottom: '0', width: '100%', left: 0, right: 0, zIndex: 10, paddingBottom: '20px' }}
+                    className="hero-marquee"
                 >
-                    <div style={{ background: 'transparent', padding: '24px 0' }}>
+                    <div className="hero-marquee-track">
                         <Marquee gradient={false} speed={50}>
-                            <div style={{ display: 'flex', gap: '100px', padding: '0 50px', alignItems: 'center' }}>
-                                <div style={{ display: 'flex', alignItems: 'center', opacity: 0.7, transition: 'all 0.3s' }} className="hover:opacity-100 hover:scale-105">
-                                    <img src="/logos/valorant.png" alt="Valorant" style={{ height: '100px', objectFit: 'contain' }} />
+                            <div className="hero-logos">
+                                <div className="hero-logo-item hover:opacity-100 hover:scale-105">
+                                    <img src="/logos/valorant.png" alt="Valorant" className="hero-logo hero-logo-sm" />
                                 </div>
-                                <div style={{ display: 'flex', alignItems: 'center', opacity: 0.7, transition: 'all 0.3s' }} className="hover:opacity-100 hover:scale-105">
-                                    <img src="/logos/League_of_legends.png" alt="League of Legends" style={{ height: '100px', objectFit: 'contain' }} />
+                                <div className="hero-logo-item hover:opacity-100 hover:scale-105">
+                                    <img src="/logos/League_of_legends.png" alt="League of Legends" className="hero-logo hero-logo-sm" />
                                 </div>
-                                <div style={{ display: 'flex', alignItems: 'center', opacity: 0.7, transition: 'all 0.3s' }} className="hover:opacity-100 hover:scale-105">
-                                    <img src="/logos/PUBG_mobile.png" alt="PUBG Mobile" style={{ height: '100px', objectFit: 'contain' }} />
+                                <div className="hero-logo-item hover:opacity-100 hover:scale-105">
+                                    <img src="/logos/PUBG_mobile.png" alt="PUBG Mobile" className="hero-logo hero-logo-sm" />
                                 </div>
-                                <div style={{ display: 'flex', alignItems: 'center', opacity: 0.7, transition: 'all 0.3s' }} className="hover:opacity-100 hover:scale-105">
-                                    <img src="/logos/Mobile_legends.png" alt="Mobile Legends" style={{ height: '160px', objectFit: 'contain' }} />
+                                <div className="hero-logo-item hover:opacity-100 hover:scale-105">
+                                    <img src="/logos/Mobile_legends.png" alt="Mobile Legends" className="hero-logo hero-logo-lg" />
                                 </div>
-                                <div style={{ display: 'flex', alignItems: 'center', opacity: 0.7, transition: 'all 0.3s' }} className="hover:opacity-100 hover:scale-105">
-                                    <img src="/logos/Fifa.png" alt="FIFA" style={{ height: '100px', objectFit: 'contain' }} />
+                                <div className="hero-logo-item hover:opacity-100 hover:scale-105">
+                                    <img src="/logos/Fifa.png" alt="FIFA" className="hero-logo hero-logo-sm" />
                                 </div>
-                                <div style={{ display: 'flex', alignItems: 'center', opacity: 0.7, transition: 'all 0.3s' }} className="hover:opacity-100 hover:scale-105">
-                                    <img src="/logos/Freefire.png" alt="Free Fire" style={{ height: '80px', objectFit: 'contain' }} />
+                                <div className="hero-logo-item hover:opacity-100 hover:scale-105">
+                                    <img src="/logos/Freefire.png" alt="Free Fire" className="hero-logo hero-logo-xs" />
                                 </div>
-                                <div style={{ display: 'flex', alignItems: 'center', opacity: 0.7, transition: 'all 0.3s' }} className="hover:opacity-100 hover:scale-105">
-                                    <img src="/logos/Honor_of_kings.png" alt="Honor of Kings" style={{ height: '160px', objectFit: 'contain' }} />
+                                <div className="hero-logo-item hover:opacity-100 hover:scale-105">
+                                    <img src="/logos/Honor_of_kings.png" alt="Honor of Kings" className="hero-logo hero-logo-lg" />
                                 </div>
-                                <div style={{ display: 'flex', alignItems: 'center', opacity: 0.7, transition: 'all 0.3s' }} className="hover:opacity-100 hover:scale-105">
-                                    <img src="/logos/TEKKEN.png" alt="Tekken" style={{ height: '160px', objectFit: 'contain' }} />
+                                <div className="hero-logo-item hover:opacity-100 hover:scale-105">
+                                    <img src="/logos/TEKKEN.png" alt="Tekken" className="hero-logo hero-logo-lg" />
                                 </div>
                             </div>
                         </Marquee>
@@ -79,22 +79,22 @@ const Home = () => {
             </section>
 
             {/* Our Operations Section (Rephrased What We Do) */}
-            <section className="services" style={{ padding: '100px 0', position: 'relative', zIndex: 10 }}>
+            <section className="services home-section">
                 <div className="container" style={{ position: 'relative', zIndex: 2 }}>
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ duration: 0.6 }}
-                        style={{ textAlign: 'center', marginBottom: '80px' }}
+                        className="home-section-header"
                     >
-                        <h2 style={{ fontSize: '3.5rem', marginBottom: '20px' }}>What We <span className="gradient-text">Execute</span></h2>
-                        <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '1.2rem', maxWidth: '750px', margin: '0 auto', lineHeight: '1.8' }}>
+                        <h2 className="home-section-title">What We <span className="gradient-text">Execute</span></h2>
+                        <p className="home-section-intro">
                             We illuminate the passion and grind behind every match, transforming competitive milestones into unforgettable digital narratives.
                         </p>
                     </motion.div>
 
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px' }}>
+                    <div className="home-services-grid">
                         {[
                             { title: 'Talent Management', desc: 'Guiding top esports athletes with comprehensive career stewardship, ensuring they focus on winning while we handle the business.', icon: <Users size={32} color="var(--accent-purple)" /> },
                             { title: 'Brand Amplification', desc: 'Constructing robust personal brands and identity assets that resonate deeply within the gaming community.', icon: <Target size={32} color="var(--accent-cyan)" /> },
@@ -125,23 +125,23 @@ const Home = () => {
             </section>
 
             {/* Why Brands Choose Us Section */}
-            <section style={{ padding: '120px 0', background: 'linear-gradient(to bottom, transparent, rgba(147, 51, 234, 0.05))', position: 'relative', zIndex: 10 }}>
+            <section className="home-brands-section">
                 <div className="container">
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '80px' }}>
+                    <div className="home-brands-shell">
                         <motion.div 
                             initial={{ opacity: 0, x: -50 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6 }}
-                            style={{ maxWidth: '600px' }}
+                            className="home-brands-copy"
                         >
-                            <h2 style={{ fontSize: '3rem', marginBottom: '24px' }}>Why Brands <br/><span className="gradient-text">Partner With Us</span></h2>
-                            <p style={{ fontSize: '1.15rem', color: 'rgba(255, 255, 255, 0.8)', lineHeight: '1.8' }}>
+                            <h2 className="home-section-title">Why Brands <br/><span className="gradient-text">Partner With Us</span></h2>
+                            <p className="home-section-intro home-brands-intro">
                                 We don't just secure sponsorships; we engineer integrated cultural moments. Discover how we elevate brand visibility through authentic gaming connections.
                             </p>
                         </motion.div>
 
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '40px' }}>
+                        <div className="home-brands-grid">
                             {[
                                 { title: 'Genuine Connections', desc: 'We align brands with passionate esports athletes, forging collaborations built on mutual trust and shared values that truly resonate with fans.', icon: <Heart size={28} color="var(--accent-purple)" /> },
                                 { title: 'Innovative Campaigns', desc: 'Transforming sponsorships into compelling digital narratives. Our creative methodologies help your brand stand out in a saturated digital arena.', icon: <Sparkles size={28} color="var(--accent-cyan)" /> },
@@ -172,18 +172,17 @@ const Home = () => {
             </section>
             
             {/* CTA Section */}
-            <section style={{ padding: '100px 0', textAlign: 'center', position: 'relative', zIndex: 10 }}>
+            <section className="home-cta-section">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
-                    className="glass-card"
-                    style={{ maxWidth: '800px', margin: '0 auto', padding: '60px', borderRadius: '30px', background: 'rgba(147, 51, 234, 0.1)', border: '1px solid rgba(147, 51, 234, 0.2)' }}
+                    className="glass-card home-cta-card"
                 >
                     <Award size={48} color="var(--accent-cyan)" style={{ margin: '0 auto 24px auto' }} />
-                    <h2 style={{ fontSize: '2.5rem', marginBottom: '20px' }}>Ready to Build Your Legacy?</h2>
-                    <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', marginBottom: '40px' }}>Join the elite ranks of players and brands shaping the future of competitive gaming.</p>
+                    <h2 className="home-cta-title">Ready to Build Your Legacy?</h2>
+                    <p className="home-cta-text">Join the elite ranks of players and brands shaping the future of competitive gaming.</p>
                     <Link to="/contact">
                         <button className="btn-primary" style={{ padding: '16px 40px', fontSize: '1.1rem', borderRadius: '50px' }}>
                             Start the Journey

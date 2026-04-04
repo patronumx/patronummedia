@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Zap } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
     const location = useLocation();
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -18,6 +19,10 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    useEffect(() => {
+        setIsMenuOpen(false);
+    }, [location.pathname]);
+
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
@@ -26,36 +31,44 @@ const Navbar = () => {
     };
 
     return (
-        <header style={{ position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 100, pointerEvents: 'none' }}>
-            <div className="container" style={{ display: 'flex', alignItems: 'center', paddingTop: '24px', position: 'relative' }}>
+        <header className="site-header">
+            <div className="container nav-shell">
                 <motion.div
                     initial={{ opacity: 0, x: -30 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     className={`nav-brand ${isScrolled ? 'nav-brand-scrolled' : ''}`}
-                    style={{ pointerEvents: 'auto', marginLeft: '-2.5rem' }}
                 >
-                    <Link to="/" onClick={scrollToTop} style={{ display: 'flex', alignItems: 'center', gap: '15px', textDecoration: 'none' }}>
+                    <Link to="/" onClick={scrollToTop} className="nav-brand-link">
                         <motion.img 
                             src="/logo.png" 
                             alt="Patronum Media Logo" 
-                            style={{ height: '75px', objectFit: 'contain' }}
+                            className="nav-brand-logo"
                             whileHover={{ rotate: 5, scale: 1.1 }}
                             transition={{ type: 'spring', stiffness: 300 }}
                         />
-                        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                            <span style={{ fontSize: '1.8rem', fontWeight: 900, color: 'white', lineHeight: '0.9', letterSpacing: '1px' }}>PATRONUM MEDIA</span>
-                            <span className="gradient-text" style={{ fontSize: '0.8rem', fontWeight: 700, letterSpacing: '3px', marginTop: '6px' }}>PATRONUMX ECOSYSTEM</span>
+                        <div className="nav-brand-text">
+                            <span className="nav-brand-title">PATRONUM MEDIA</span>
+                            <span className="gradient-text nav-brand-subtitle">PATRONUMX ECOSYSTEM</span>
                         </div>
                     </Link>
                 </motion.div>
 
+                <button
+                    type="button"
+                    className={`mobile-menu-toggle ${isMenuOpen ? 'is-open' : ''}`}
+                    onClick={() => setIsMenuOpen((open) => !open)}
+                    aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+                    aria-expanded={isMenuOpen}
+                >
+                    {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
+                </button>
+
                 <motion.nav
-                    className={`navbar ${isScrolled ? 'navbar-scrolled' : ''}`}
+                    className={`navbar ${isScrolled ? 'navbar-scrolled' : ''} ${isMenuOpen ? 'navbar-mobile-open' : ''}`}
                     initial={{ opacity: 0, y: -20, x: "-50%" }}
                     animate={{ opacity: 1, y: 0, x: "-50%" }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
-                    style={{ pointerEvents: 'auto' }}
                 >
                     <ul className="nav-links">
                         <li className={location.pathname === '/' ? 'active' : ''}>

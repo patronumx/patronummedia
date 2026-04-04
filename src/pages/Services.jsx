@@ -13,7 +13,7 @@ const Services = () => {
     };
 
     return (
-        <section className="features container" style={{ paddingTop: '150px', paddingBottom: '100px', minHeight: '80vh' }}>
+        <section className="features container page-shell">
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -21,8 +21,8 @@ const Services = () => {
                 style={{ textAlign: 'center', marginBottom: '60px' }}
             >
                 <span className="section-tag">Core Capabilities</span>
-                <h1 style={{ fontSize: '3rem', marginBottom: '20px' }}>Elevating the <span className="gradient-text">Ecosystem</span></h1>
-                <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto', fontSize: '1.1rem' }}>We deliver an interconnected suite of creative tools designed strictly for elite performance.</p>
+                <h1 className="page-title">Elevating the <span className="gradient-text">Ecosystem</span></h1>
+                <p className="page-intro" style={{ maxWidth: '600px', margin: '0 auto' }}>We deliver an interconnected suite of creative tools designed strictly for elite performance.</p>
             </motion.div>
 
             <motion.div
