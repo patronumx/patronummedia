@@ -5,9 +5,7 @@ const BackgroundAnimation = () => {
     return (
         <div style={{
             position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100vw',
+            inset: 0,
             height: '100vh',
             zIndex: -1,
             overflow: 'hidden',

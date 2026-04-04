@@ -66,8 +66,8 @@ const Navbar = () => {
 
                 <motion.nav
                     className={`navbar ${isScrolled ? 'navbar-scrolled' : ''} ${isMenuOpen ? 'navbar-mobile-open' : ''}`}
-                    initial={{ opacity: 0, y: -20, x: "-50%" }}
-                    animate={{ opacity: 1, y: 0, x: "-50%" }}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
                 >
                     <ul className="nav-links">
