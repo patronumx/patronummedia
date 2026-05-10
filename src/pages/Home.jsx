@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Sparkles, ArrowRight, Gamepad2, Swords, Target, Crown, Users, Zap, Heart, Shield, Globe, Award } from 'lucide-react';
 import Marquee from "react-fast-marquee";
 import { Link } from 'react-router-dom';
+import ThumbnailCarousel from '../components/ThumbnailCarousel';
 
 const Home = () => {
     const containerVariants = {
@@ -16,24 +17,32 @@ const Home = () => {
 
     return (
         <div style={{ overflow: 'hidden' }}>
-            <section className="hero">
+            <section className="hero" style={{ paddingTop: '180px', paddingBottom: '120px' }}>
                 <motion.div className="hero-content" variants={containerVariants} initial="hidden" animate="visible">
+                    <motion.div variants={itemVariants} className="hero-badge">
+                        <span>Pioneering the Digital Nexus</span>
+                    </motion.div>
+                    
                     <motion.h1 variants={itemVariants}>
-                        Elevating Esports Talent.
+                        Elevating Esports <span className="gradient-text">Talent.</span>
                     </motion.h1>
 
-                    <motion.p variants={itemVariants} className="hero-description">
-                        We connect world-class gaming phenoms with international opportunities. By bridging the gap between raw skill and global recognition, we engineer legendary careers that transcend the screen. From career stewardship to authentic brand alliances, your ultimate path to victory starts here.
+                    <motion.p variants={itemVariants} className="hero-description" style={{ fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto 2.5rem' }}>
+                        We connect world-class phenoms with international opportunities, bridging the gap between raw skill and global recognition.
                     </motion.p>
+
+                    <motion.div variants={itemVariants} style={{ marginBottom: '60px' }}>
+                        <ThumbnailCarousel />
+                    </motion.div>
 
                     <motion.div variants={itemVariants} className="hero-buttons">
                         <Link to="/contact">
-                            <button className="btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                Collaborate With Us <ArrowRight size={18} />
+                            <button className="btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '16px 40px' }}>
+                                Collaborate With Us <ArrowRight size={20} />
                             </button>
                         </Link>
                         <Link to="/portfolio">
-                            <button className="btn-secondary">Explore Talent</button>
+                            <button className="btn-secondary" style={{ padding: '16px 40px' }}>Explore Portfolio</button>
                         </Link>
                     </motion.div>
                 </motion.div>
@@ -48,28 +57,28 @@ const Home = () => {
                     <div className="hero-marquee-track">
                         <Marquee gradient={false} speed={50}>
                             <div className="hero-logos">
-                                <div className="hero-logo-item hover:opacity-100 hover:scale-105">
+                                <div className="hero-logo-item">
                                     <img src="/logos/valorant.png" alt="Valorant" className="hero-logo hero-logo-sm" />
                                 </div>
-                                <div className="hero-logo-item hover:opacity-100 hover:scale-105">
+                                <div className="hero-logo-item">
                                     <img src="/logos/League_of_legends.png" alt="League of Legends" className="hero-logo hero-logo-sm" />
                                 </div>
-                                <div className="hero-logo-item hover:opacity-100 hover:scale-105">
+                                <div className="hero-logo-item">
                                     <img src="/logos/PUBG_mobile.png" alt="PUBG Mobile" className="hero-logo hero-logo-sm" />
                                 </div>
-                                <div className="hero-logo-item hover:opacity-100 hover:scale-105">
+                                <div className="hero-logo-item">
                                     <img src="/logos/Mobile_legends.png" alt="Mobile Legends" className="hero-logo hero-logo-lg" />
                                 </div>
-                                <div className="hero-logo-item hover:opacity-100 hover:scale-105">
+                                <div className="hero-logo-item">
                                     <img src="/logos/Fifa.png" alt="FIFA" className="hero-logo hero-logo-sm" />
                                 </div>
-                                <div className="hero-logo-item hover:opacity-100 hover:scale-105">
+                                <div className="hero-logo-item">
                                     <img src="/logos/Freefire.png" alt="Free Fire" className="hero-logo hero-logo-xs" />
                                 </div>
-                                <div className="hero-logo-item hover:opacity-100 hover:scale-105">
+                                <div className="hero-logo-item">
                                     <img src="/logos/Honor_of_kings.png" alt="Honor of Kings" className="hero-logo hero-logo-lg" />
                                 </div>
-                                <div className="hero-logo-item hover:opacity-100 hover:scale-105">
+                                <div className="hero-logo-item">
                                     <img src="/logos/TEKKEN.png" alt="Tekken" className="hero-logo hero-logo-lg" />
                                 </div>
                             </div>
@@ -78,7 +87,7 @@ const Home = () => {
                 </motion.div>
             </section>
 
-            {/* Our Operations Section (Rephrased What We Do) */}
+            {/* Our Operations Section */}
             <section className="services home-section">
                 <div className="container" style={{ position: 'relative', zIndex: 2 }}>
                     <motion.div

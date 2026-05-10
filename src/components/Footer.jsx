@@ -26,8 +26,8 @@ const Footer = () => {
                         </div>
                         <p>Engineering the future of esports content. From algorithmic optimization to hyper-visual executions, we operate seamlessly within the digital void.</p>
                         <div style={{ marginTop: '16px', display: 'flex', gap: '16px' }}>
-                            <a href="mailto:patronumgg@gmail.com" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--accent-cyan)' }}>
-                                <Mail size={20} /> patronumgg@gmail.com
+                            <a href="mailto:business@patronumx.com" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--accent-cyan)' }}>
+                                <Mail size={20} /> business@patronumx.com
                             </a>
                         </div>
                     </div>

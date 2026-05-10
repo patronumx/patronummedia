@@ -52,8 +52,8 @@ const Contact = () => {
                                 </div>
                                 <div>
                                     <div style={{ color: 'rgba(255,255,255,0.62)', fontSize: '0.8rem', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', marginBottom: '6px' }}>Email Address</div>
-                                    <a href="mailto:patronumgg@gmail.com" className="contact-detail-link">
-                                        patronumgg@gmail.com
+                                    <a href="mailto:business@patronumx.com" className="contact-detail-link">
+                                        business@patronumx.com
                                     </a>
                                 </div>
                             </div>
