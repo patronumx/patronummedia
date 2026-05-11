@@ -19,6 +19,7 @@ const Portfolio = () => {
                 videoRefs.current[playingIndex].pause();
                 videoRefs.current[playingIndex].currentTime = 0;
             }
+            video.muted = false;
             video.play().catch(() => {});
             setPlayingIndex(index);
         }
@@ -60,11 +61,11 @@ const Portfolio = () => {
     ];
 
     const shortVideos = [
-        "GIRAF SHOES ADDIDAS.mp4",
-        "keyboard video - (1).mp4",
-        "revised ALI SUFYAN ANKER TECH REVIEW.mp4",
-        "event video .mp4",
-        "short interview.mp4"
+        "giraf-shoes-adidas.mp4",
+        "keyboard-video.mp4",
+        "anker-tech-review.mp4",
+        "event-video.mp4",
+        "short-interview.mp4"
     ];
 
     const longVideos = [
@@ -156,11 +157,11 @@ const Portfolio = () => {
     };
 
     const shortVideoNames = {
-        "GIRAF SHOES ADDIDAS.mp4": "GIRAF Shoes Adidas Commercial",
-        "keyboard video - (1).mp4": "Mechanical Keyboard Showcase",
-        "revised ALI SUFYAN ANKER TECH REVIEW.mp4": "Anker Tech Review - Ali Sufyan",
-        "event video .mp4": "Production Excellence Showcase",
-        "short interview.mp4": "Short Interview Feature"
+        "giraf-shoes-adidas.mp4": "GIRAF Shoes Adidas Commercial",
+        "keyboard-video.mp4": "Mechanical Keyboard Showcase",
+        "anker-tech-review.mp4": "Anker Tech Review - Ali Sufyan",
+        "event-video.mp4": "Production Excellence Showcase",
+        "short-interview.mp4": "Short Interview Feature"
     };
 
     const longVideoNames = {
@@ -180,8 +181,8 @@ const Portfolio = () => {
     const getFolderPath = () => {
         if (activeTab === 'Posters') return '/assets/Posters';
         if (activeTab === 'Thumbnails') return '/assets/Thumbnails';
-        if (activeTab === 'Shorts') return '/assets/Short videos';
-        if (activeTab === 'Longs') return '/assets/Long form videos';
+        if (activeTab === 'Shorts') return '/assets/short-videos';
+        if (activeTab === 'Longs') return '/assets/long-videos';
         return '';
     };
 
@@ -277,10 +278,19 @@ const Portfolio = () => {
                                         src={`${folderPath}/${item}`}
                                         loop
                                         playsInline
-                                        onMouseEnter={(e) => e.target.play()}
+                                        onMouseEnter={(e) => {
+                                            const video = e.target;
+                                            video.muted = false;
+                                            video.play().catch(() => {
+                                                // Fallback to muted if browser blocks audio autoplay
+                                                video.muted = true;
+                                                video.play();
+                                            });
+                                        }}
                                         onMouseLeave={(e) => {
-                                            e.target.pause();
-                                            e.target.currentTime = 0;
+                                            const video = e.target;
+                                            video.pause();
+                                            video.currentTime = 0;
                                             setPlayingIndex(null);
                                         }}
                                         onClick={(e) => handleVideoTap(e, index)}
