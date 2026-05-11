@@ -261,7 +261,7 @@ const Portfolio = () => {
                         <motion.div 
                             variants={itemVariants} 
                             className="portfolio-item glass-card" 
-                            key={index} 
+                            key={`${activeTab}-${index}`} 
                             style={{ 
                                 height: activeTab === 'Posters' ? '450px' : (activeTab === 'Shorts' ? '500px' : (activeTab === 'Longs' ? '280px' : '280px')), 
                                 width: activeTab === 'Shorts' ? '280px' : (activeTab === 'Longs' ? '500px' : 'auto'),
@@ -269,36 +269,48 @@ const Portfolio = () => {
                                 borderRadius: '16px', 
                                 overflow: 'hidden', 
                                 border: '1px solid rgba(255, 255, 255, 0.1)',
-                                position: 'relative'
+                                position: 'relative',
+                                cursor: 'pointer'
                             }}
+                            onMouseEnter={() => {
+                                if (activeTab === 'Shorts' || activeTab === 'Longs') {
+                                    const video = videoRefs.current[index];
+                                    if (video) {
+                                        setPlayingIndex(index);
+                                        video.muted = false;
+                                        const playPromise = video.play();
+                                        if (playPromise !== undefined) {
+                                            playPromise.catch(() => {
+                                                video.muted = true;
+                                                video.play().catch(() => {});
+                                            });
+                                        }
+                                    }
+                                }
+                            }}
+                            onMouseLeave={() => {
+                                if (activeTab === 'Shorts' || activeTab === 'Longs') {
+                                    const video = videoRefs.current[index];
+                                    if (video) {
+                                        video.pause();
+                                        video.currentTime = 0;
+                                        setPlayingIndex(null);
+                                    }
+                                }
+                            }}
+                            onClick={(e) => handleVideoTap(e, index)}
                         >
                             {activeTab === 'Shorts' || activeTab === 'Longs' ? (
                                 <>
                                     <video
+                                        key={`${folderPath}-${item}`}
                                         ref={(el) => { videoRefs.current[index] = el; }}
+                                        src={`${folderPath}/${item}`}
                                         loop
+                                        muted
                                         playsInline
-                                        onMouseEnter={(e) => {
-                                            const video = e.target;
-                                            video.muted = false;
-                                            const playPromise = video.play();
-                                            if (playPromise !== undefined) {
-                                                playPromise.catch(() => {
-                                                    video.muted = true;
-                                                    video.play().catch(() => {});
-                                                });
-                                            }
-                                        }}
-                                        onMouseLeave={(e) => {
-                                            const video = e.target;
-                                            video.pause();
-                                            video.currentTime = 0;
-                                            setPlayingIndex(null);
-                                        }}
-                                        onClick={(e) => handleVideoTap(e, index)}
-                                        style={{ width: '100%', height: '100%', objectFit: 'cover', cursor: 'pointer', display: 'block' }}
+                                        style={{ width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none', display: 'block' }}
                                     >
-                                        <source src={`${folderPath}/${item}`} type="video/mp4" />
                                         Your browser does not support the video tag.
                                     </video>
                                     {/* Mobile tap-to-play button — hidden on desktop via CSS */}
