@@ -189,6 +189,8 @@ const Portfolio = () => {
 
     const itemsToDisplay = getItemsToDisplay();
     const folderPath = getFolderPath();
+    
+    console.log('Portfolio Debug:', { activeTab, itemsCount: itemsToDisplay.length, folderPath });
 
     return (
         <section className="portfolio container page-shell">
@@ -300,8 +302,8 @@ const Portfolio = () => {
                             }}
                             onClick={(e) => handleVideoTap(e, index)}
                         >
-                            {activeTab === 'Shorts' || activeTab === 'Longs' ? (
-                                <>
+                            { (activeTab === 'Shorts' || activeTab === 'Longs') ? (
+                                <div style={{ width: '100%', height: '100%', position: 'relative', background: '#000' }}>
                                     <video
                                         key={`${folderPath}-${item}`}
                                         ref={(el) => { videoRefs.current[index] = el; }}
@@ -309,14 +311,16 @@ const Portfolio = () => {
                                         loop
                                         muted
                                         playsInline
-                                        style={{ width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none', display: 'block' }}
+                                        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', pointerEvents: 'none' }}
                                     >
                                         Your browser does not support the video tag.
                                     </video>
-                                    {/* Mobile tap-to-play button — hidden on desktop via CSS */}
                                     <div
                                         className="video-tap-btn"
-                                        onClick={(e) => handleVideoTap(e, index)}
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            handleVideoTap(e, index);
+                                        }}
                                         style={{
                                             position: 'absolute',
                                             bottom: '70px',
@@ -331,7 +335,7 @@ const Portfolio = () => {
                                             alignItems: 'center',
                                             justifyContent: 'center',
                                             cursor: 'pointer',
-                                            zIndex: 10,
+                                            zIndex: 20,
                                             transition: 'opacity 0.3s ease',
                                             opacity: playingIndex === index ? 0 : 1,
                                             pointerEvents: 'auto'
@@ -341,7 +345,7 @@ const Portfolio = () => {
                                             <polygon points="5,3 19,12 5,21" />
                                         </svg>
                                     </div>
-                                </>
+                                </div>
                             ) : (
                                 <img
                                     src={`${folderPath}/${item}`}

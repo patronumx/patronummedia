@@ -764,7 +764,6 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
                 this.speedUp += lerp(this.speedUp, this.speedUpTarget, lerpPercentage, 0.00001);
                 this.timeOffset += this.speedUp * delta;
 
-                this.timer.update();
                 let time = this.timer.getElapsed() + this.timeOffset;
 
                 this.rightCarLights.update(time);
@@ -838,7 +837,8 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
                     this.camera.aspect = canvas.clientWidth / canvas.clientHeight;
                     this.camera.updateProjectionMatrix();
                 }
-                const delta = this.clock.getDelta();
+                this.timer.update();
+                const delta = this.timer.getDelta();
                 this.render(delta);
                 this.update(delta);
                 requestAnimationFrame(this.tick);
