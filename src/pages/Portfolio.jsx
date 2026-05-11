@@ -179,11 +179,12 @@ const Portfolio = () => {
     };
 
     const getFolderPath = () => {
-        if (activeTab === 'Posters') return '/assets/Posters';
-        if (activeTab === 'Thumbnails') return '/assets/Thumbnails';
-        if (activeTab === 'Shorts') return '/assets/short-videos';
-        if (activeTab === 'Longs') return '/assets/long-videos';
-        return '';
+        const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+        if (activeTab === 'Posters') return `${base}/assets/Posters`;
+        if (activeTab === 'Thumbnails') return `${base}/assets/Thumbnails`;
+        if (activeTab === 'Shorts') return `${base}/assets/short-videos`;
+        if (activeTab === 'Longs') return `${base}/assets/long-videos`;
+        return base;
     };
 
     const itemsToDisplay = getItemsToDisplay();
@@ -275,17 +276,18 @@ const Portfolio = () => {
                                 <>
                                     <video
                                         ref={(el) => { videoRefs.current[index] = el; }}
-                                        src={`${folderPath}/${item}`}
                                         loop
                                         playsInline
                                         onMouseEnter={(e) => {
                                             const video = e.target;
                                             video.muted = false;
-                                            video.play().catch(() => {
-                                                // Fallback to muted if browser blocks audio autoplay
-                                                video.muted = true;
-                                                video.play();
-                                            });
+                                            const playPromise = video.play();
+                                            if (playPromise !== undefined) {
+                                                playPromise.catch(() => {
+                                                    video.muted = true;
+                                                    video.play().catch(() => {});
+                                                });
+                                            }
                                         }}
                                         onMouseLeave={(e) => {
                                             const video = e.target;
@@ -295,7 +297,10 @@ const Portfolio = () => {
                                         }}
                                         onClick={(e) => handleVideoTap(e, index)}
                                         style={{ width: '100%', height: '100%', objectFit: 'cover', cursor: 'pointer', display: 'block' }}
-                                    />
+                                    >
+                                        <source src={`${folderPath}/${item}`} type="video/mp4" />
+                                        Your browser does not support the video tag.
+                                    </video>
                                     {/* Mobile tap-to-play button — hidden on desktop via CSS */}
                                     <div
                                         className="video-tap-btn"
