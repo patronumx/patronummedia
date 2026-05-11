@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import BackgroundAnimation from './components/animations/BackgroundAnimation';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -13,7 +13,7 @@ import TalentProfile from './pages/TalentProfile';
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <BackgroundAnimation />
       <Navbar />
       <Routes>
@@ -26,7 +26,7 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
       </Routes>
       <Footer />
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
