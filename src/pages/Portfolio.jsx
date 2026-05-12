@@ -170,7 +170,7 @@ const Portfolio = () => {
         "videoplayback": "Premium Cinematic Feature"
     };
 
-    const CLOUDINARY_BASE_URL = 'https://res.cloudinary.com/dt4wbagyu/video/upload/q_auto,f_auto/patronum%20media';
+    const CLOUDINARY_BASE_URL = 'https://res.cloudinary.com/dt4wbagyu/video/upload/q_auto/patronum%20media';
 
     const getItemsToDisplay = () => {
         if (activeTab === 'Posters') return posters;
@@ -311,12 +311,12 @@ const Portfolio = () => {
                                     <video
                                         key={getAssetUrl(item)}
                                         ref={(el) => { videoRefs.current[index] = el; }}
-                                        src={getAssetUrl(item)}
                                         loop
                                         muted
                                         playsInline
                                         style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', pointerEvents: 'none' }}
                                     >
+                                        <source src={getAssetUrl(item)} type="video/mp4" />
                                         Your browser does not support the video tag.
                                     </video>
                                     <div
