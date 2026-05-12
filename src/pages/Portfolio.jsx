@@ -61,17 +61,17 @@ const Portfolio = () => {
     ];
 
     const shortVideos = [
-        "giraf-shoes-adidas",
-        "keyboard-video",
-        "anker-tech-review",
+        "giraf-shoes-adidas_1_jjwzm4",
+        "keyboard-video_1_tap1eh",
+        "anker-tech-review_1_1_swysuu",
         "event-video_crafeo",
         "short-interview_sbgeq7"
     ];
 
     const longVideos = [
-        "long",
-        "longgg",
-        "videoplayback"
+        "long_fqtrlr",
+        "longg_cnujdk",
+        "videoplayback_q9kezx"
     ];
 
     const posterNames = {
@@ -157,20 +157,20 @@ const Portfolio = () => {
     };
 
     const shortVideoNames = {
-        "giraf-shoes-adidas": "GIRAF Shoes Adidas Commercial",
-        "keyboard-video": "Mechanical Keyboard Showcase",
-        "anker-tech-review": "Anker Tech Review - Ali Sufyan",
+        "giraf-shoes-adidas_1_jjwzm4": "GIRAF Shoes Adidas Commercial",
+        "keyboard-video_1_tap1eh": "Mechanical Keyboard Showcase",
+        "anker-tech-review_1_1_swysuu": "Anker Tech Review - Ali Sufyan",
         "event-video_crafeo": "Production Excellence Showcase",
         "short-interview_sbgeq7": "Short Interview Feature"
     };
 
     const longVideoNames = {
-        "long": "Cinematic Brand Story",
-        "longgg": "Product Showcase Documentary",
-        "videoplayback": "Premium Cinematic Feature"
+        "long_fqtrlr": "Cinematic Brand Story",
+        "longg_cnujdk": "Product Showcase Documentary",
+        "videoplayback_q9kezx": "Premium Cinematic Feature"
     };
 
-    const CLOUDINARY_BASE_URL = 'https://res.cloudinary.com/dt4wbagyu/video/upload/q_auto/patronum%20media';
+    const CLOUDINARY_BASE_URL = 'https://res.cloudinary.com/dt4wbagyu/video/upload/q_auto';
 
     const getItemsToDisplay = () => {
         if (activeTab === 'Posters') return posters;
