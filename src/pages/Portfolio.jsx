@@ -269,8 +269,8 @@ const Portfolio = () => {
                             className="portfolio-item glass-card" 
                             key={`${activeTab}-${index}`} 
                             style={{ 
-                                height: activeTab === 'Posters' ? '450px' : (activeTab === 'Shorts' ? '500px' : (activeTab === 'Longs' ? '280px' : '280px')), 
-                                width: activeTab === 'Shorts' ? '280px' : (activeTab === 'Longs' ? '500px' : 'auto'),
+                                height: activeTab === 'Posters' ? '400px' : (activeTab === 'Shorts' ? '420px' : (activeTab === 'Longs' ? '240px' : '240px')), 
+                                width: activeTab === 'Shorts' ? '240px' : (activeTab === 'Longs' ? '450px' : 'auto'),
                                 flexShrink: (activeTab === 'Shorts' || activeTab === 'Longs') ? 0 : undefined,
                                 borderRadius: '16px', 
                                 overflow: 'hidden', 
