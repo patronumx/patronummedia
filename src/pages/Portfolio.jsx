@@ -61,17 +61,17 @@ const Portfolio = () => {
     ];
 
     const shortVideos = [
-        "giraf-shoes-adidas.mp4",
-        "keyboard-video.mp4",
-        "anker-tech-review.mp4",
-        "event-video.mp4",
-        "short-interview.mp4"
+        "giraf-shoes-adidas",
+        "keyboard-video",
+        "anker-tech-review",
+        "event-video_crafeo",
+        "short-interview_sbgeq7"
     ];
 
     const longVideos = [
-        "long.mp4",
-        "longg.mp4",
-        "videoplayback.mp4"
+        "long",
+        "longgg",
+        "videoplayback"
     ];
 
     const posterNames = {
@@ -157,18 +157,20 @@ const Portfolio = () => {
     };
 
     const shortVideoNames = {
-        "giraf-shoes-adidas.mp4": "GIRAF Shoes Adidas Commercial",
-        "keyboard-video.mp4": "Mechanical Keyboard Showcase",
-        "anker-tech-review.mp4": "Anker Tech Review - Ali Sufyan",
-        "event-video.mp4": "Production Excellence Showcase",
-        "short-interview.mp4": "Short Interview Feature"
+        "giraf-shoes-adidas": "GIRAF Shoes Adidas Commercial",
+        "keyboard-video": "Mechanical Keyboard Showcase",
+        "anker-tech-review": "Anker Tech Review - Ali Sufyan",
+        "event-video_crafeo": "Production Excellence Showcase",
+        "short-interview_sbgeq7": "Short Interview Feature"
     };
 
     const longVideoNames = {
-        "long.mp4": "Cinematic Brand Story",
-        "longg.mp4": "Product Showcase Documentary",
-        "videoplayback.mp4": "Premium Cinematic Feature"
+        "long": "Cinematic Brand Story",
+        "longgg": "Product Showcase Documentary",
+        "videoplayback": "Premium Cinematic Feature"
     };
+
+    const CLOUDINARY_BASE_URL = 'https://res.cloudinary.com/dt4wbagyu/video/upload/q_auto,f_auto/patronum%20media';
 
     const getItemsToDisplay = () => {
         if (activeTab === 'Posters') return posters;
@@ -178,19 +180,21 @@ const Portfolio = () => {
         return [];
     };
 
-    const getFolderPath = () => {
+    const getAssetUrl = (item) => {
         const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
-        if (activeTab === 'Posters') return `${base}/assets/Posters`;
-        if (activeTab === 'Thumbnails') return `${base}/assets/Thumbnails`;
-        if (activeTab === 'Shorts') return `${base}/assets/short-videos`;
-        if (activeTab === 'Longs') return `${base}/assets/long-videos`;
-        return base;
+        
+        if (activeTab === 'Posters') return `${base}/assets/Posters/${item}`;
+        if (activeTab === 'Thumbnails') return `${base}/assets/Thumbnails/${item}`;
+        
+        // For Videos, use Cloudinary
+        // Note: Filenames should match the Public ID in Cloudinary
+        const safeItem = encodeURIComponent(item);
+        return `${CLOUDINARY_BASE_URL}/${safeItem}`;
     };
 
     const itemsToDisplay = getItemsToDisplay();
-    const folderPath = getFolderPath();
     
-    console.log('Portfolio Debug:', { activeTab, itemsCount: itemsToDisplay.length, folderPath });
+    console.log('Portfolio Debug:', { activeTab, itemsCount: itemsToDisplay.length });
 
     return (
         <section className="portfolio container page-shell">
@@ -305,9 +309,9 @@ const Portfolio = () => {
                             { (activeTab === 'Shorts' || activeTab === 'Longs') ? (
                                 <div style={{ width: '100%', height: '100%', position: 'relative', background: '#000' }}>
                                     <video
-                                        key={`${folderPath}-${item}`}
+                                        key={getAssetUrl(item)}
                                         ref={(el) => { videoRefs.current[index] = el; }}
-                                        src={`${folderPath}/${item}`}
+                                        src={getAssetUrl(item)}
                                         loop
                                         muted
                                         playsInline
@@ -348,7 +352,7 @@ const Portfolio = () => {
                                 </div>
                             ) : (
                                 <img
-                                    src={`${folderPath}/${item}`}
+                                    src={getAssetUrl(item)}
                                     alt={`${activeTab} ${index + 1}`}
                                     style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }}
                                 />
